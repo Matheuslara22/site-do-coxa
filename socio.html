@@ -1,0 +1,1557 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Seja Sócio | Coritiba Foot Ball Club</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    :root {
+      --bg: #06110b;
+      --bg-2: #0a1810;
+      --bg-3: #102319;
+      --card: rgba(255,255,255,0.05);
+      --card-strong: rgba(255,255,255,0.08);
+      --line: rgba(255,255,255,0.09);
+      --white: #ffffff;
+      --text: #edf8f1;
+      --muted: #bbd1c2;
+      --green-1: #0b5d2a;
+      --green-2: #0f7a37;
+      --green-3: #19a74d;
+      --green-soft: rgba(25,167,77,0.18);
+      --shadow: 0 20px 60px rgba(0,0,0,0.35);
+      --shadow-soft: 0 12px 35px rgba(0,0,0,0.20);
+      --radius: 24px;
+      --radius-lg: 34px;
+      --max-width: 1260px;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(25,167,77,0.14), transparent 26%),
+        radial-gradient(circle at top right, rgba(15,122,55,0.18), transparent 22%),
+        linear-gradient(180deg, #06110b 0%, #09150e 35%, #0c1b13 100%);
+      overflow-x: hidden;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .container {
+      width: min(92%, var(--max-width));
+      margin: 0 auto;
+    }
+
+    #modo-pb {
+      display: none;
+    }
+
+    .site {
+      transition: 0.4s ease;
+    }
+
+    #modo-pb:checked ~ .site {
+      filter: grayscale(100%);
+    }
+
+    .section-space {
+      padding: 95px 0;
+    }
+
+    .section-title {
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto 50px;
+    }
+
+    .section-title span {
+      display: inline-block;
+      color: #91f0b2;
+      font-size: 0.88rem;
+      font-weight: 800;
+      letter-spacing: 1.3px;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .section-title h2 {
+      font-size: clamp(2rem, 4vw, 3.4rem);
+      line-height: 1.02;
+      margin-bottom: 14px;
+    }
+
+    .section-title p {
+      color: var(--muted);
+      font-size: 1rem;
+      line-height: 1.7;
+    }
+
+    .top-line {
+      height: 4px;
+      width: 160px;
+      margin: 0 auto 22px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, transparent, var(--green-3), #ffffff, var(--green-2), transparent);
+      box-shadow: 0 0 20px rgba(25,167,77,0.4);
+    }
+
+    .glass {
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+    }
+
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      background: rgba(4, 10, 7, 0.72);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav {
+      min-height: 86px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-weight: 900;
+      font-size: 1.2rem;
+      letter-spacing: 0.4px;
+    }
+
+    .brand-icon {
+      width: 50px;
+      height: 50px;
+      border-radius: 16px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, var(--green-3), var(--green-1));
+      box-shadow: 0 12px 30px rgba(25,167,77,0.22);
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .menu {
+      display: flex;
+      gap: 26px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .menu a {
+      color: var(--muted);
+      font-weight: 700;
+      position: relative;
+      transition: 0.3s ease;
+    }
+
+    .menu a:hover {
+      color: var(--white);
+    }
+
+    .menu a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -7px;
+      width: 0;
+      height: 2px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--green-3), #ffffff);
+      transition: 0.3s ease;
+    }
+
+    .menu a:hover::after {
+      width: 100%;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      padding: 14px 22px;
+      font-weight: 800;
+      transition: 0.3s ease;
+      border: 1px solid transparent;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    .btn-primary {
+      color: var(--white);
+      background: linear-gradient(135deg, var(--green-3), var(--green-1));
+      box-shadow: 0 15px 35px rgba(25,167,77,0.24);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 22px 44px rgba(25,167,77,0.32);
+    }
+
+    .btn-outline {
+      color: var(--white);
+      background: rgba(255,255,255,0.04);
+      border-color: rgba(255,255,255,0.12);
+    }
+
+    .btn-outline:hover {
+      transform: translateY(-3px);
+      background: rgba(255,255,255,0.08);
+    }
+
+    .btn-bw {
+      background: linear-gradient(135deg, #000000, #333333, #ffffff);
+      color: #ffffff;
+      border: 1px solid rgba(255,255,255,0.15);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .btn-bw:hover {
+      transform: translateY(-3px) scale(1.02);
+    }
+
+    .hero {
+      padding: 90px 0 70px;
+      position: relative;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.08fr 0.92fr;
+      gap: 34px;
+      align-items: center;
+    }
+
+    .hero-left {
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 20px;
+      padding: 12px 18px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      color: #dbefe2;
+      font-weight: 700;
+    }
+
+    .hero-badge::before {
+      content: "●";
+      color: #84ffb3;
+      font-size: 0.8rem;
+      text-shadow: 0 0 14px #84ffb3;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.7rem, 6vw, 5.4rem);
+      line-height: 0.95;
+      letter-spacing: -2px;
+      font-weight: 900;
+      margin-bottom: 20px;
+      max-width: 760px;
+    }
+
+    .hero h1 span {
+      background: linear-gradient(135deg, #ffffff, #8df0af);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero p {
+      color: var(--muted);
+      font-size: 1.08rem;
+      line-height: 1.75;
+      max-width: 650px;
+      margin-bottom: 28px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 34px;
+    }
+
+    .hero-tags {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .hero-tags span {
+      padding: 10px 16px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      color: #d6e9dc;
+      font-weight: 700;
+      font-size: 0.92rem;
+    }
+
+    .hero-right {
+      position: relative;
+    }
+
+    .hero-visual {
+      min-height: 660px;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      position: relative;
+      border: 1px solid rgba(255,255,255,0.08);
+      background:
+        linear-gradient(rgba(0,0,0,0.18), rgba(0,0,0,0.48)),
+        url("torcida.jpg") center/cover no-repeat;
+      box-shadow: var(--shadow);
+    }
+
+    .hero-visual::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at top right, rgba(25,167,77,0.34), transparent 28%),
+        radial-gradient(circle at bottom left, rgba(255,255,255,0.10), transparent 24%);
+    }
+
+    .floating-card {
+      position: absolute;
+      left: 24px;
+      right: 24px;
+      bottom: 24px;
+      z-index: 2;
+      padding: 24px;
+      border-radius: 26px;
+      background: rgba(5, 14, 9, 0.78);
+      border: 1px solid rgba(255,255,255,0.08);
+      box-shadow: var(--shadow);
+    }
+
+    .floating-card h3 {
+      font-size: 1.4rem;
+      margin-bottom: 8px;
+    }
+
+    .floating-card p {
+      color: var(--muted);
+      line-height: 1.7;
+      margin-bottom: 14px;
+    }
+
+    .mini-stats {
+      padding-top: 30px;
+    }
+
+    .mini-stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .mini-stat {
+      padding: 22px;
+      border-radius: 22px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.03));
+      border: 1px solid rgba(255,255,255,0.08);
+      box-shadow: var(--shadow-soft);
+      transition: 0.3s ease;
+    }
+
+    .mini-stat:hover {
+      transform: translateY(-6px);
+      border-color: rgba(141,240,175,0.35);
+    }
+
+    .mini-stat strong {
+      display: block;
+      font-size: 1.8rem;
+      margin-bottom: 6px;
+    }
+
+    .mini-stat span {
+      color: var(--muted);
+      line-height: 1.6;
+      font-size: 0.95rem;
+    }
+
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 22px;
+    }
+
+    .benefit-card {
+      position: relative;
+      padding: 28px;
+      border-radius: 28px;
+      overflow: hidden;
+      background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
+      border: 1px solid rgba(255,255,255,0.08);
+      box-shadow: var(--shadow-soft);
+      transition: 0.35s ease;
+    }
+
+    .benefit-card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(141,240,175,0.35);
+    }
+
+    .benefit-card::before {
+      content: "";
+      position: absolute;
+      top: -60px;
+      right: -60px;
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(25,167,77,0.28), transparent 70%);
+    }
+
+    .benefit-icon {
+      width: 62px;
+      height: 62px;
+      display: grid;
+      place-items: center;
+      border-radius: 18px;
+      margin-bottom: 18px;
+      background: linear-gradient(135deg, var(--green-3), var(--green-1));
+      box-shadow: 0 12px 30px rgba(25,167,77,0.22);
+      font-weight: 900;
+    }
+
+    .benefit-card h3 {
+      font-size: 1.18rem;
+      margin-bottom: 10px;
+    }
+
+    .benefit-card p {
+      color: var(--muted);
+      line-height: 1.7;
+      font-size: 0.96rem;
+    }
+
+    .plans-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    .plan-card {
+      position: relative;
+      padding: 34px 28px;
+      border-radius: 32px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
+      border: 1px solid rgba(255,255,255,0.08);
+      box-shadow: var(--shadow);
+      transition: 0.35s ease;
+    }
+
+    .plan-card:hover {
+      transform: translateY(-10px);
+    }
+
+    .plan-featured {
+      transform: scale(1.03);
+      border-color: rgba(141,240,175,0.40);
+      background: linear-gradient(180deg, rgba(25,167,77,0.22), rgba(255,255,255,0.04));
+    }
+
+    .plan-ribbon {
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      font-size: 0.82rem;
+      font-weight: 800;
+      background: #ffffff;
+      color: #0b381c;
+    }
+
+    .plan-label {
+      display: inline-block;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.06);
+      color: #cdf7da;
+      font-size: 0.84rem;
+      font-weight: 800;
+      margin-bottom: 14px;
+    }
+
+    .plan-card h3 {
+      font-size: 1.7rem;
+      margin-bottom: 8px;
+    }
+
+    .plan-card p {
+      color: var(--muted);
+      line-height: 1.7;
+      margin-bottom: 18px;
+    }
+
+    .price {
+      font-size: 2.8rem;
+      font-weight: 900;
+      line-height: 1;
+      margin-bottom: 22px;
+    }
+
+    .price small {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--muted);
+    }
+
+    .plan-list {
+      list-style: none;
+      margin-bottom: 26px;
+    }
+
+    .plan-list li {
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      color: #f0faf3;
+    }
+
+    .plan-list li:last-child {
+      border-bottom: none;
+    }
+
+    .compare-box {
+      padding: 34px;
+      border-radius: 34px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.03));
+      border: 1px solid rgba(255,255,255,0.08);
+      box-shadow: var(--shadow);
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      min-width: 760px;
+      border-collapse: collapse;
+    }
+
+    th, td {
+      padding: 18px 16px;
+      text-align: center;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    th {
+      background: rgba(255,255,255,0.06);
+      color: #ffffff;
+      font-size: 1rem;
+    }
+
+    td:first-child,
+    th:first-child {
+      text-align: left;
+      font-weight: 800;
+    }
+
+    tr:hover td {
+      background: rgba(255,255,255,0.03);
+    }
+
+    .experience-grid {
+      display: grid;
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: 28px;
+      align-items: stretch;
+    }
+
+    .experience-image {
+      min-height: 540px;
+      border-radius: 32px;
+      border: 1px solid rgba(255,255,255,0.08);
+      background:
+        linear-gradient(rgba(0,0,0,0.22), rgba(0,0,0,0.45)),
+        url("estadio.jpg") center/cover no-repeat;
+      box-shadow: var(--shadow);
+    }
+
+    .experience-content {
+      padding: 34px;
+      border-radius: 32px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.03));
+      border: 1px solid rgba(255,255,255,0.08);
+      box-shadow: var(--shadow);
+    }
+
+    .experience-content h3 {
+      font-size: 2rem;
+      margin-bottom: 12px;
+    }
+
+    .experience-content p {
+      color: var(--muted);
+      line-height: 1.8;
+      margin-bottom: 24px;
+    }
+
+    .experience-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .experience-item {
+      padding: 20px;
+      border-radius: 22px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .experience-item strong {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 1.05rem;
+    }
+
+    .experience-item span {
+      color: var(--muted);
+      line-height: 1.6;
+      font-size: 0.94rem;
+    }
+
+    .timeline {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .timeline-step {
+      position: relative;
+      padding: 26px 22px;
+      border-radius: 24px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.03));
+      border: 1px solid rgba(255,255,255,0.08);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .timeline-step::before {
+      content: attr(data-step);
+      display: grid;
+      place-items: center;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      margin-bottom: 16px;
+      background: linear-gradient(135deg, var(--green-3), var(--green-1));
+      font-weight: 900;
+      box-shadow: 0 10px 24px rgba(25,167,77,0.24);
+    }
+
+    .timeline-step h3 {
+      font-size: 1.08rem;
+      margin-bottom: 8px;
+    }
+
+    .timeline-step p {
+      color: var(--muted);
+      line-height: 1.7;
+      font-size: 0.95rem;
+    }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .testimonial {
+      padding: 28px;
+      border-radius: 28px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
+      border: 1px solid rgba(255,255,255,0.08);
+      box-shadow: var(--shadow-soft);
+      transition: 0.3s ease;
+    }
+
+    .testimonial:hover {
+      transform: translateY(-6px);
+    }
+
+    .stars {
+      margin-bottom: 16px;
+      color: #9cf0b7;
+      letter-spacing: 2px;
+      font-size: 1rem;
+    }
+
+    .testimonial p {
+      color: var(--muted);
+      line-height: 1.8;
+      margin-bottom: 16px;
+    }
+
+    .testimonial strong {
+      display: block;
+      color: #ffffff;
+    }
+
+    .testimonial span {
+      color: #c6d9cd;
+      font-size: 0.92rem;
+    }
+
+    .join-grid {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 28px;
+      align-items: start;
+    }
+
+    .join-left,
+    .join-right {
+      padding: 34px;
+      border-radius: 32px;
+      border: 1px solid rgba(255,255,255,0.08);
+      box-shadow: var(--shadow);
+    }
+
+    .join-left {
+      background: linear-gradient(180deg, rgba(25,167,77,0.20), rgba(255,255,255,0.03));
+    }
+
+    .join-left h3,
+    .join-right h3 {
+      font-size: 2rem;
+      margin-bottom: 12px;
+    }
+
+    .join-left p,
+    .join-right p {
+      color: var(--muted);
+      line-height: 1.8;
+      margin-bottom: 22px;
+    }
+
+    .join-points {
+      list-style: none;
+    }
+
+    .join-points li {
+      padding: 13px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .join-points li:last-child {
+      border-bottom: none;
+    }
+
+    .join-right {
+      background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.03));
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .form-group {
+      margin-bottom: 16px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 800;
+      color: #f1fbf4;
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      border: 1px solid rgba(255,255,255,0.08);
+      outline: none;
+      border-radius: 18px;
+      padding: 16px;
+      background: rgba(255,255,255,0.05);
+      color: #ffffff;
+      font-size: 1rem;
+      transition: 0.3s ease;
+    }
+
+    input::placeholder,
+    textarea::placeholder {
+      color: #aac0b2;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      border-color: rgba(141,240,175,0.44);
+      box-shadow: 0 0 0 4px rgba(25,167,77,0.12);
+    }
+
+    textarea {
+      min-height: 130px;
+      resize: vertical;
+    }
+
+    .faq-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .faq-item {
+      padding: 24px;
+      border-radius: 24px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.03));
+      border: 1px solid rgba(255,255,255,0.08);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .faq-item h3 {
+      font-size: 1.08rem;
+      margin-bottom: 10px;
+    }
+
+    .faq-item p {
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .cta-strip {
+      padding: 30px;
+      border-radius: 30px;
+      background:
+        linear-gradient(135deg, rgba(25,167,77,0.28), rgba(255,255,255,0.06)),
+        linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.03));
+      border: 1px solid rgba(255,255,255,0.08);
+      box-shadow: var(--shadow);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .cta-strip h3 {
+      font-size: 1.8rem;
+      margin-bottom: 8px;
+    }
+
+    .cta-strip p {
+      color: var(--muted);
+      line-height: 1.7;
+      max-width: 650px;
+    }
+
+    footer {
+      padding: 50px 0;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      background: rgba(0,0,0,0.18);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr 0.8fr;
+      gap: 26px;
+    }
+
+    .footer-box h3 {
+      font-size: 1.2rem;
+      margin-bottom: 12px;
+    }
+
+    .footer-box p,
+    .footer-box a {
+      color: var(--muted);
+      line-height: 1.9;
+    }
+
+    .footer-box a:hover {
+      color: var(--white);
+    }
+
+    .footer-bottom {
+      margin-top: 30px;
+      padding-top: 24px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      color: #aabeb0;
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 1100px) {
+      .hero-grid,
+      .experience-grid,
+      .join-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .benefits-grid,
+      .timeline,
+      .mini-stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .plans-grid,
+      .testimonials-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .plan-featured {
+        transform: none;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 820px) {
+      .nav {
+        padding: 16px 0;
+        flex-direction: column;
+      }
+
+      .menu,
+      .nav-actions,
+      .hero-buttons {
+        justify-content: center;
+      }
+
+      .experience-list,
+      .faq-grid,
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+
+      .benefits-grid,
+      .timeline,
+      .mini-stats-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-visual {
+        min-height: 470px;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .btn,
+      .btn-bw {
+        width: 100%;
+      }
+
+      .nav-actions {
+        width: 100%;
+        flex-direction: column;
+      }
+
+      .hero h1 {
+        letter-spacing: -1px;
+      }
+
+      .hero-visual,
+      .experience-image {
+        min-height: 380px;
+      }
+
+      .floating-card,
+      .join-left,
+      .join-right,
+      .compare-box,
+      .experience-content,
+      .testimonial,
+      .benefit-card,
+      .plan-card,
+      .timeline-step,
+      .faq-item,
+      .mini-stat {
+        padding: 22px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <input type="checkbox" id="modo-pb">
+
+  <div class="site">
+    <header class="header glass">
+      <div class="container nav">
+        <a href="#" class="brand">
+          <div class="brand-icon">CFC</div>
+          <span>Coritiba FC</span>
+        </a>
+
+        <nav class="menu">
+          <a href="#beneficios">Benefícios</a>
+          <a href="#planos">Planos</a>
+          <a href="#experiencia">Experiência</a>
+          <a href="#depoimentos">Depoimentos</a>
+          <a href="#cadastro">Cadastro</a>
+        </nav>
+
+        <div class="nav-actions">
+          <label for="modo-pb" class="btn btn-bw">Preto e Branco</label>
+          <a href="#cadastro" class="btn btn-primary">Quero ser sócio</a>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="container hero-grid">
+          <div class="hero-left">
+            <div class="hero-badge">Uma experiência premium para quem vive o clube</div>
+
+            <h1>Seja sócio e viva o <span>Coritiba</span> em outro patamar.</h1>
+
+            <p>
+              Aqui o torcedor encontra mais que um formulário. Encontra uma página forte, elegante e bem construída,
+              pensada para passar valor, identidade, impacto visual e sensação real de exclusividade.
+            </p>
+
+            <div class="hero-buttons">
+              <a href="#planos" class="btn btn-primary">Ver planos</a>
+              <a href="#experiencia" class="btn btn-outline">Explorar página</a>
+            </div>
+
+            <div class="hero-tags">
+              <span>Design premium</span>
+              <span>Experiência responsiva</span>
+              <span>Detalhes que valorizam</span>
+            </div>
+          </div>
+
+          <div class="hero-right">
+            <div class="hero-visual">
+              <div class="floating-card">
+                <h3>Mais presença. Mais clube. Mais Coritiba.</h3>
+                <p>
+                  Prioridade, vantagens exclusivas, experiências especiais e um visual à altura da grandeza da torcida.
+                </p>
+                <a href="#cadastro" class="btn btn-primary">Associar agora</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="container mini-stats">
+          <div class="mini-stats-grid">
+            <div class="mini-stat">
+              <strong>3</strong>
+              <span>Planos para perfis diferentes de torcedor</span>
+            </div>
+            <div class="mini-stat">
+              <strong>VIP</strong>
+              <span>Experiências e benefícios especiais</span>
+            </div>
+            <div class="mini-stat">
+              <strong>100%</strong>
+              <span>Layout adaptado para celular e computador</span>
+            </div>
+            <div class="mini-stat">
+              <strong>Premium</strong>
+              <span>Visual forte para valorizar o projeto</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="beneficios" class="section-space">
+        <div class="container">
+          <div class="section-title">
+            <div class="top-line"></div>
+            <span>Benefícios</span>
+            <h2>Os detalhes fazem o torcedor sentir que está em algo maior</h2>
+            <p>
+              Cada bloco desta página foi pensado para passar sensação de valor, pertencimento e força visual.
+            </p>
+          </div>
+
+          <div class="benefits-grid">
+            <article class="benefit-card">
+              <div class="benefit-icon">01</div>
+              <h3>Prioridade em ingressos</h3>
+              <p>Mais segurança na hora de garantir presença nos jogos e campanhas mais importantes da temporada.</p>
+            </article>
+
+            <article class="benefit-card">
+              <div class="benefit-icon">02</div>
+              <h3>Descontos exclusivos</h3>
+              <p>Condições melhores em produtos oficiais, ações promocionais e benefícios com parceiros.</p>
+            </article>
+
+            <article class="benefit-card">
+              <div class="benefit-icon">03</div>
+              <h3>Experiências especiais</h3>
+              <p>Campanhas, ativações e momentos pensados para aproximar ainda mais o torcedor do clube.</p>
+            </article>
+
+            <article class="benefit-card">
+              <div class="benefit-icon">04</div>
+              <h3>Mais conexão com o clube</h3>
+              <p>Ser sócio deixa de ser só cadastro e vira uma experiência contínua de pertencimento.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="planos" class="section-space">
+        <div class="container">
+          <div class="section-title">
+            <div class="top-line"></div>
+            <span>Planos</span>
+            <h2>Escolha o plano ideal para viver o clube do seu jeito</h2>
+            <p>
+              Estrutura clara, leitura fácil e plano principal destacado para facilitar a decisão.
+            </p>
+          </div>
+
+          <div class="plans-grid">
+            <article class="plan-card">
+              <div class="plan-label">Entrada</div>
+              <h3>Plano Verde</h3>
+              <p>Ideal para quem quer começar a participar mais de perto da vida do Coritiba.</p>
+              <div class="price">R$ 29 <small>/mês</small></div>
+
+              <ul class="plan-list">
+                <li>Desconto em ingressos</li>
+                <li>Carteirinha digital</li>
+                <li>Promoções exclusivas</li>
+                <li>Ofertas com parceiros</li>
+                <li>Conteúdo especial</li>
+              </ul>
+
+              <a href="#cadastro" class="btn btn-primary">Escolher plano</a>
+            </article>
+
+            <article class="plan-card plan-featured">
+              <div class="plan-ribbon">Mais escolhido</div>
+              <div class="plan-label">Intermediário</div>
+              <h3>Alma Coxa</h3>
+              <p>O melhor equilíbrio entre custo, prioridade e vantagens mais fortes dentro da página.</p>
+              <div class="price">R$ 59 <small>/mês</small></div>
+
+              <ul class="plan-list">
+                <li>Prioridade na compra</li>
+                <li>Maior desconto na loja</li>
+                <li>Campanhas exclusivas</li>
+                <li>Benefícios premium</li>
+                <li>Acesso a ações especiais</li>
+              </ul>
+
+              <a href="#cadastro" class="btn btn-primary">Escolher plano</a>
+            </article>
+
+            <article class="plan-card">
+              <div class="plan-label">Premium</div>
+              <h3>Campeão</h3>
+              <p>Para o torcedor que quer o máximo de exclusividade, presença e experiência.</p>
+              <div class="price">R$ 99 <small>/mês</small></div>
+
+              <ul class="plan-list">
+                <li>Máxima prioridade</li>
+                <li>Experiências VIP</li>
+                <li>Atendimento diferenciado</li>
+                <li>Maior desconto oficial</li>
+                <li>Eventos especiais</li>
+              </ul>
+
+              <a href="#cadastro" class="btn btn-primary">Escolher plano</a>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-space">
+        <div class="container">
+          <div class="section-title">
+            <div class="top-line"></div>
+            <span>Comparação</span>
+            <h2>Comparação rápida entre os planos</h2>
+            <p>
+              Uma tabela bem feita aumenta a clareza e ajuda o visitante a decidir mais rápido.
+            </p>
+          </div>
+
+          <div class="compare-box">
+            <table>
+              <thead>
+                <tr>
+                  <th>Benefícios</th>
+                  <th>Plano Verde</th>
+                  <th>Alma Coxa</th>
+                  <th>Campeão</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Desconto em ingressos</td>
+                  <td>Sim</td>
+                  <td>Sim</td>
+                  <td>Sim</td>
+                </tr>
+                <tr>
+                  <td>Prioridade na compra</td>
+                  <td>Não</td>
+                  <td>Sim</td>
+                  <td>Sim</td>
+                </tr>
+                <tr>
+                  <td>Desconto na loja oficial</td>
+                  <td>Básico</td>
+                  <td>Intermediário</td>
+                  <td>Máximo</td>
+                </tr>
+                <tr>
+                  <td>Ações especiais</td>
+                  <td>Limitadas</td>
+                  <td>Sim</td>
+                  <td>Sim</td>
+                </tr>
+                <tr>
+                  <td>Experiência VIP</td>
+                  <td>Não</td>
+                  <td>Não</td>
+                  <td>Sim</td>
+                </tr>
+                <tr>
+                  <td>Atendimento diferenciado</td>
+                  <td>Não</td>
+                  <td>Não</td>
+                  <td>Sim</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section id="experiencia" class="section-space">
+        <div class="container">
+          <div class="section-title">
+            <div class="top-line"></div>
+            <span>Experiência</span>
+            <h2>Os microdetalhes deixam o projeto com cara de site de verdade</h2>
+            <p>
+              Borda, brilho, sombra, espaçamento, contraste e hierarquia. É isso que muda a percepção visual.
+            </p>
+          </div>
+
+          <div class="experience-grid">
+            <div class="experience-image"></div>
+
+            <div class="experience-content">
+              <h3>Uma página premium começa na sensação visual</h3>
+              <p>
+                Não é só sobre colocar informação. É sobre fazer o usuário bater o olho e sentir que está vendo algo forte,
+                organizado e profissional.
+              </p>
+
+              <div class="experience-list">
+                <div class="experience-item">
+                  <strong>Hero impactante</strong>
+                  <span>Uma abertura forte faz o visitante entender o valor da página logo nos primeiros segundos.</span>
+                </div>
+                <div class="experience-item">
+                  <strong>Cards com profundidade</strong>
+                  <span>Sombra e contraste certo deixam os blocos mais sofisticados.</span>
+                </div>
+                <div class="experience-item">
+                  <strong>Plano destacado</strong>
+                  <span>Ajuda a guiar a decisão e deixa o layout mais estratégico.</span>
+                </div>
+                <div class="experience-item">
+                  <strong>Botão preto e branco</strong>
+                  <span>Um detalhe visual simples que deixa a página mais marcante.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-space">
+        <div class="container">
+          <div class="section-title">
+            <div class="top-line"></div>
+            <span>Como funciona</span>
+            <h2>Processo simples, visual bonito</h2>
+            <p>
+              Uma mini timeline também ajuda a página a parecer mais completa e mais confiável.
+            </p>
+          </div>
+
+          <div class="timeline">
+            <article class="timeline-step" data-step="1">
+              <h3>Escolha o plano</h3>
+              <p>Veja os benefícios e escolha a opção que mais combina com o seu perfil de torcedor.</p>
+            </article>
+
+            <article class="timeline-step" data-step="2">
+              <h3>Preencha o cadastro</h3>
+              <p>Informe seus dados com um formulário organizado e visualmente profissional.</p>
+            </article>
+
+            <article class="timeline-step" data-step="3">
+              <h3>Confirme sua associação</h3>
+              <p>Finalize a etapa de adesão e prepare a entrada em uma experiência mais exclusiva.</p>
+            </article>
+
+            <article class="timeline-step" data-step="4">
+              <h3>Viva o clube de perto</h3>
+              <p>Comece a aproveitar vantagens, prioridade e mais proximidade com o Coritiba.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="depoimentos" class="section-space">
+        <div class="container">
+          <div class="section-title">
+            <div class="top-line"></div>
+            <span>Depoimentos</span>
+            <h2>Mais uma camada de valor para a página</h2>
+            <p>
+              Mesmo sendo exemplo visual, os depoimentos ajudam a dar sensação de credibilidade e capricho.
+            </p>
+          </div>
+
+          <div class="testimonials-grid">
+            <article class="testimonial">
+              <div class="stars">★★★★★</div>
+              <p>Gostei muito da organização da página. Ela passa uma imagem forte e muito mais profissional.</p>
+              <strong>Lucas A.</strong>
+              <span>Sócio torcedor</span>
+            </article>
+
+            <article class="testimonial">
+              <div class="stars">★★★★★</div>
+              <p>O layout ficou bonito no celular e no computador. Os detalhes realmente fazem diferença.</p>
+              <strong>Marina R.</strong>
+              <span>Torcedora coxa-branca</span>
+            </article>
+
+            <article class="testimonial">
+              <div class="stars">★★★★★</div>
+              <p>Os planos ficaram claros, o visual ficou elegante e o botão preto e branco deu um toque diferente.</p>
+              <strong>Felipe S.</strong>
+              <span>Visitante do site</span>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="cadastro" class="section-space">
+        <div class="container">
+          <div class="section-title">
+            <div class="top-line"></div>
+            <span>Cadastro</span>
+            <h2>Associe-se agora</h2>
+            <p>
+              Um formulário bem apresentado ajuda a transmitir confiança e fecha melhor a experiência da página.
+            </p>
+          </div>
+
+          <div class="join-grid">
+            <div class="join-left">
+              <h3>Por que virar sócio?</h3>
+              <p>
+                Porque além das vantagens reais, você também fortalece o clube e entra em uma experiência mais envolvente.
+              </p>
+
+              <ul class="join-points">
+                <li>Mais proximidade com o time</li>
+                <li>Benefícios em jogos e produtos</li>
+                <li>Experiência mais completa</li>
+                <li>Maior sensação de pertencimento</li>
+                <li>Página visualmente forte e convincente</li>
+              </ul>
+            </div>
+
+            <div class="join-right">
+              <h3>Quero ser sócio</h3>
+              <p>Preencha os dados abaixo e escolha o melhor plano para você.</p>
+
+              <form>
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="nome">Nome completo</label>
+                    <input type="text" id="nome" placeholder="Digite seu nome completo">
+                  </div>
+
+                  <div class="form-group">
+                    <label for="cpf">CPF</label>
+                    <input type="text" id="cpf" placeholder="Digite seu CPF">
+                  </div>
+                </div>
+
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="email">E-mail</label>
+                    <input type="email" id="email" placeholder="Digite seu e-mail">
+                  </div>
+
+                  <div class="form-group">
+                    <label for="telefone">Telefone</label>
+                    <input type="text" id="telefone" placeholder="Digite seu telefone">
+                  </div>
+                </div>
+
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="cidade">Cidade</label>
+                    <input type="text" id="cidade" placeholder="Sua cidade">
+                  </div>
+
+                  <div class="form-group">
+                    <label for="plano">Plano</label>
+                    <select id="plano">
+                      <option>Selecione um plano</option>
+                      <option>Plano Verde</option>
+                      <option>Alma Coxa</option>
+                      <option>Campeão</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="mensagem">Mensagem</label>
+                  <textarea id="mensagem" placeholder="Escreva algo, se quiser"></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-primary" style="width:100%;">Enviar cadastro</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-space">
+        <div class="container">
+          <div class="cta-strip">
+            <div>
+              <h3>Pronto para deixar esse projeto ainda mais brabo?</h3>
+              <p>
+                Essa estrutura já está em nível premium, mas ainda dá para evoluir com menu mobile, animações mais finas,
+                dropdown, loading visual e página de planos separada.
+              </p>
+            </div>
+
+            <a href="#cadastro" class="btn btn-primary">Começar agora</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-space">
+        <div class="container">
+          <div class="section-title">
+            <div class="top-line"></div>
+            <span>FAQ</span>
+            <h2>Dúvidas frequentes</h2>
+            <p>
+              Uma seção simples, mas que fecha bem a página e deixa tudo mais completo.
+            </p>
+          </div>
+
+          <div class="faq-grid">
+            <article class="faq-item">
+              <h3>Essa página funciona no celular?</h3>
+              <p>Sim. O layout foi montado para ficar bonito em desktop, tablet e mobile.</p>
+            </article>
+
+            <article class="faq-item">
+              <h3>O botão preto e branco funciona sem JavaScript?</h3>
+              <p>Sim. Ele usa apenas HTML e CSS com checkbox e filter grayscale.</p>
+            </article>
+
+            <article class="faq-item">
+              <h3>Posso trocar as imagens facilmente?</h3>
+              <p>Sim. Basta trocar os arquivos usados em torcida.jpg e estadio.jpg.</p>
+            </article>
+
+            <article class="faq-item">
+              <h3>Essa página pode virar parte do site principal?</h3>
+              <p>Sim. Ela pode ser usada como página independente ou integrada no seu projeto maior.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-box">
+            <h3>Coritiba Foot Ball Club</h3>
+            <p>
+              Uma página feita para valorizar a experiência do torcedor e dar um ar premium ao projeto.
+            </p>
+          </div>
+
+          <div class="footer-box">
+            <h3>Navegação</h3>
+            <p><a href="#beneficios">Benefícios</a></p>
+            <p><a href="#planos">Planos</a></p>
+            <p><a href="#experiencia">Experiência</a></p>
+            <p><a href="#cadastro">Cadastro</a></p>
+          </div>
+
+          <div class="footer-box">
+            <h3>Contato</h3>
+            <p>contato@coritiba.com</p>
+            <p>(41) 99999-9999</p>
+            <p>Curitiba - PR</p>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <span>© 2026 Coritiba Foot Ball Club</span>
+          <span>Projeto visual premium em HTML e CSS</span>
+        </div>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>
